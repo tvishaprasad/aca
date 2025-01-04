@@ -1,0 +1,43 @@
+class listNode:
+    def __init__(self , value=0,next=None):
+        self.value=value
+        self.next=None
+        
+def mergea(l1,l2):
+    dummy=listNode()
+    current=dummy   
+    while l1 and l2:
+        if l1.value<l2.value:
+            current.next=l1
+            l1=l1.next
+        else:
+            current.next=l2
+            l2=l2.next
+        current=current.next        
+    current.next= l1 if l1 else l2
+    return dummy.next
+    
+def creat(values):
+    if not values:
+        return None
+    head=listNode(values[0])
+    current=head
+    for value in values[1:]:
+        current.next=listNode(value)
+        current=current.next
+    return head
+def printt(head):
+    current=head
+    while current:
+        print(current.value,end="->")
+        current=current.next
+    print("None")
+l1=creat([1,3,5])
+l2=creat([2,4,6])
+print("List1:")
+printt(l1)
+print("List2:")
+printt(l2)
+mlist=mergea(l1,l2)
+print("Merged ll:")
+printt(mlist)
