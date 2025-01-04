@@ -1,0 +1,9 @@
+from collections import Counter
+def freq_sort(arr):
+    frequency=Counter(arr)
+    sorted_arr=sorted(arr,key=lambda x:(-frequency[x],x))
+    return sorted_arr
+
+arr=list(map(int,input("Enter array with space").split()))
+sort=freq_sort(arr)
+print("sorted array : ",sort)
