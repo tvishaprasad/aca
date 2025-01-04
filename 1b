@@ -1,0 +1,23 @@
+def dfs(graph,start):
+    visited = set()
+    stack = [start]
+    while stack:
+        node=stack.pop()
+        if node not in visited:
+            print(node, end=" ")
+            visited.add(node)
+            for neighbour in reversed(graph[node]):
+                if neighbour not in visited:
+                    stack.append(neighbour)
+
+graph={
+    'A' : ['B', 'D'],
+    'B' : ['C','D','G','F'],
+    'C' : ['B', 'D', 'F'],
+    'D' : ['B', 'C' ,'E'],
+    'E' : ['D', 'G'],
+    'F' : ['B','C'],
+    'G' : ['B', 'E']
+}
+print("DFS starting from node A")
+dfs(graph,'A')
