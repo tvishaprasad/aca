@@ -1,0 +1,21 @@
+def merge_arrays(arr1,arr2):
+    merge_array=[]
+    i=j=0
+    
+    while i<len(arr1) and j<len(arr2):
+        if arr1[i]<arr2[j]:
+            merge_array.append(arr1[i])
+            i+=1
+        else:
+            merge_array.append(arr2[j])
+            j+=1
+
+    merge_array.extend(arr1[i:])
+    merge_array.extend(arr2[j:])
+    return merge_array
+
+arr1=sorted(list(map(int,input("Enter array1 with spaces").split())))
+arr2=sorted(list(map(int,input("enter array2 with spaces").split())))
+
+merged=merge_arrays(arr1,arr2)
+print("merged arrays:",merged)
