@@ -1,0 +1,12 @@
+def is_balanced(expr):
+    stack=[]
+    match={ ')' : '(' , ']' :'[' , '}' : '{'}
+    for char in expr:
+        if char in match.values():
+            stack.append(char)
+        elif not stack or stack.pop()!=match[char]:
+            return False
+    return len(stack) == 0
+    
+expr = input("Enter an expr")
+print("Balanced" if is_balanced(expr) else "Not balanced")
