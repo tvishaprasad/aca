@@ -1,0 +1,25 @@
+    
+def sum_subarray(arr, target_sum):
+    current_sum=0
+    start_index=0
+    for end_index in range(len(arr)):
+        current_sum += arr[end_index]
+        while current_sum > target_sum and start_index <end_index:
+            current_sum -= arr[start_index]
+            start_index += 1
+        if current_sum == target_sum:
+            return start_index, end_index
+    return None
+
+size= int(input("enter number of elements"))
+arr=[]
+for _ in range(size):
+    arr.append(int(input()))
+target_sum= int(input("enter the target sum:"))    
+
+result= sum_subarray(arr, target_sum)
+if result:
+    start , end = result
+    print("subarray found:", arr[start:end+1])
+else:
+    print("subarray not found")
